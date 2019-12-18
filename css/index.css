@@ -1,1 +1,369 @@
-/* LESS needs to be processed */
+/* 
+Task 1: Set Up The Project With Git
+ DONE Create a forked copy of this project.
+ DONE Add your team lead as collaborator on Github.
+ DONE Clone your OWN version of the repository (Not Lambda's by mistake!).
+ DONE Create a new branch: git checkout -b <firstName-lastName>.
+ Implement the project on your newly created <firstName-lastName> branch, committing changes regularly.
+ Push commits: git push origin <firstName-lastName>.
+Follow these steps for completing your project.
+
+ Submit a Pull-Request to merge Branch into master (student's Repo). Please don't merge your own pull request
+ Add your team lead as a reviewer on the pull-request
+ Your team lead will count the project as complete by merging the branch back into master.
+
+ Task 2: Set up your preprocessor
+ DONE Verify that you have LESS installed correctly by running lessc -v in your terminal, if you don't get a version message back, reach out to your team lead for help.
+ DONE Open your terminal and navigate to your preprocessing project by using the cd command
+ DONE Once in your project's root folder, run the following command less-watch-compiler less css index.less
+ DONE Verify your compiler is working correctly by changing the background-color on the html selector to red in your index.less file.
+ Once you see the red screen, you can delete that style and you're ready to start on the next task
+
+ Task 3: Import LESS Files
+ DONE Navigate to your index.less file. Notice the file is blank. In order for you to see the styles for this project you must import them in a certain order. That order is as follows:
+  variables.less
+  mixins.less
+  reset.less
+  global.less
+  navigation.less
+  footer.less
+  home-page.less
+Task 4: Desktop Updates Needed
+ Review the desktop design file. Notice the navigation, header, and buttons at the bottom of the page are missing. ** HTML Added 
+ DONE Navigation: Use the navigation.less file for all your navigation styling
+ DONE Main Header: Use the home-page.less file for the header styling.
+ DONE Buttons: Create a parametric mixin that can create the missing buttons in the design file. Use the mixins.less file to create your mixin.
+Task 5: Mobile Updates Needed
+ DONE Use escaping to create a variable named @mobile that contains this value: (max-width: 500px). Use the variables.less file to house your variables.
+ DONE Review the mobile design file. You will see several design updates that need updating.
+ DONE Match the design file at 500px as well as you can
+Stretch Goals:
+ Create an animation mixin using parametric mixins
+ DONE Introduce a form with inputs allowing users to select a vacation package and a submit button at the bottom of the page. Introduce inputs for name, email, phone number, and an area for them to leave special instructions.
+ DONE Style the site to look good at all sizes, not just desktop and phone */
+.btn {
+  width: 100%;
+  background-color: teal;
+  color: white;
+  padding: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+  border-radius: 8px;
+  font-size: 2rem;
+}
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+html,
+body {
+  font-family: 'Roboto', sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Indie Flower', cursive;
+}
+h1 {
+  font-size: 4rem;
+}
+h2 {
+  font-size: 3.2rem;
+  padding-bottom: 10px;
+}
+h4 {
+  font-size: 2.5rem;
+  padding-bottom: 10px;
+}
+p {
+  line-height: 1.5;
+  font-size: 1.6rem;
+  padding-bottom: 10px;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+.nav {
+  height: 100px;
+  width: 100vw;
+  border-bottom: 2px dashed grey;
+  display: flex;
+  padding: 0 2rem 0 2rem;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav h2 {
+  font-size: 4rem;
+}
+.nav nav {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  list-style-type: none;
+}
+.nav nav li {
+  padding: 0 2rem;
+}
+.nav nav li a {
+  text-decoration: none;
+  font-size: 2rem;
+  color: grey;
+}
+@media (max-width: 500px) {
+  .nav {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.footer {
+  width: 100%;
+  border-top: 2px dashed silver;
+  background: #FFEBCD;
+}
+.footer p {
+  text-align: center;
+  color: #212529;
+  font-size: 1.6rem;
+  padding: 20px;
+}
+.home .content-section {
+  margin: 30px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.home .content-section .img-content {
+  width: 48%;
+  padding-left: 1%;
+}
+.home .content-section .img-content img {
+  border-radius: 10px;
+}
+@media (max-width: 500px) {
+  .home .content-section {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .home .text-content {
+    margin-top: 1rem;
+    width: 100%;
+    padding-right: 1%;
+  }
+  .home .img-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .home .img-content img {
+    max-width: 80vw;
+  }
+  .home .text-content {
+    width: 80%;
+  }
+}
+.home .inverse-content {
+  padding-bottom: 30px;
+  border-bottom: 2px dashed #C0C0C0;
+}
+.home .inverse-content .text-content {
+  padding-left: 1%;
+  padding-right: 0;
+}
+.home .inverse-content .img-content {
+  padding-right: 1%;
+  padding-left: 0;
+}
+.home .content-destination {
+  width: 75%;
+  margin: 0 auto 30px;
+}
+.home .content-destination img {
+  border-radius: 10px;
+}
+.home .content-pick {
+  padding-top: 30px;
+  border-top: 2px dashed #C0C0C0;
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 500px) {
+  .home .content-pick {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.home .content-pick .destination {
+  width: 30%;
+  margin-bottom: 30px;
+}
+@media (max-width: 500px) {
+  .home .content-pick .destination {
+    width: 80%;
+  }
+}
+header {
+  padding: 0 2rem;
+}
+header .img {
+  background-image: url(../img/fun-bus.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  min-height: 300px;
+}
+header h3 {
+  margin-top: 2rem;
+  font-size: 3.6rem;
+}
+header p {
+  margin-top: 1.4rem;
+  border-bottom: 2px dashed grey;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
